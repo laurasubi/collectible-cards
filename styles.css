@@ -51,16 +51,49 @@ button:hover {
 
 #output {
     margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
 }
 
-.design-output {
-    border: 2px solid;
-    padding: 20px;
+.postal {
+    width: 49%;
+    height: 600px;
+    border: 2px solid #000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.front, .back {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.back img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.front .content {
     text-align: center;
-    border-radius: 10px;
-    margin-bottom: 20px;
+    padding: 20px;
 }
 
-#savedDesigns .design-output {
+.front h2 {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+}
+
+.front p {
+    margin: 5px 0;
+    font-size: 18px;
+    color: #555;
+}
+
+#savedDesigns .postal {
     margin-top: 10px;
 }
