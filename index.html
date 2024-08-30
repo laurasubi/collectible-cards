@@ -15,8 +15,8 @@
             <label for="title">Nombre:</label>
             <input type="text" id="title" name="title" required>
             
-            <label for="date">Fecha:</label>
-            <input type="date" id="date" name="date" required>
+            <label for="year">Año de Creación:</label>
+            <input type="text" id="year" name="year" required>
             
             <label for="designer">Diseñadora:</label>
             <input type="text" id="designer" name="designer" required>
@@ -24,8 +24,8 @@
             <label for="description">Breve Descripción:</label>
             <textarea id="description" name="description" required></textarea>
 
-            <label for="imageUrl">URL de la Imagen (para el reverso):</label>
-            <input type="url" id="imageUrl" name="imageUrl" required>
+            <label for="imageUpload">Subir Imagen (para la parte superior):</label>
+            <input type="file" id="imageUpload" name="imageUpload" accept="image/*" required>
             
             <button type="submit">Generar Postal</button>
         </form>
@@ -40,4 +40,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-
