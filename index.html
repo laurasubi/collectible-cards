@@ -3,40 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Generador de Postal</title>
+    <title>Postal Generator</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
 </head>
 <body>
     <div class="container">
-        <h1>Generador de Postal</h1>
-        <form id="designForm">
-            <label for="title">Nombre:</label>
-            <input type="text" id="title" name="title" required>
-            
-            <label for="year">Año de Creación:</label>
-            <input type="text" id="year" name="year" required>
-            
-            <label for="designer">Diseñadora:</label>
-            <input type="text" id="designer" name="designer" required>
-            
-            <label for="description">Breve Descripción:</label>
-            <textarea id="description" name="description" required></textarea>
+        <h1>Postal Generator</h1>
+        <form id="postalForm">
+            <label for="image">Upload Image:</label>
+            <input type="file" id="image" accept="image/*" required>
 
-            <label for="imageUpload">Subir Imagen (para la parte superior):</label>
-            <input type="file" id="imageUpload" name="imageUpload" accept="image/*" required>
-            
-            <button type="submit">Generar Postal</button>
+            <label for="eventName">Event Name:</label>
+            <input type="text" id="eventName" placeholder="Enter event name" required>
+
+            <label for="date">Date:</label>
+            <input type="text" id="date" placeholder="Enter date (e.g., 31 - 33 May 2012)" required>
+
+            <label for="location">Location:</label>
+            <input type="text" id="location" placeholder="Enter location" required>
+
+            <label for="designer">Designer Name:</label>
+            <input type="text" id="designer" placeholder="Enter designer name" required>
+
+            <label for="year">Year:</label>
+            <input type="text" id="year" placeholder="Enter year of creation" required>
+
+            <button type="button" id="generateBtn">Generate Postal</button>
+            <button type="button" id="exportBtn">Export as PDF</button>
         </form>
 
-        <button id="exportBtn" style="display: none;">Exportar Postal</button>
-
-        <div id="output"></div>
-
-        <h2>Postales Guardadas</h2>
-        <div id="savedDesigns"></div>
+        <div id="output">
+            <div class="postal" id="postalPreview">
+                <div class="image-section" id="imageSection">
+                    <!-- Image will be inserted here -->
+                </div>
+                <div class="text-section">
+                    <h2 id="eventNameOutput"></h2>
+                    <p class="details" id="dateOutput"></p>
+                    <p class="details" id="locationOutput"></p>
+                    <p class="bold">Horario:</p>
+                    <p>Jueves: 10:00 - 22:00</p>
+                    <p>Viernes: 10:00 - 22:00</p>
+                    <p>Domingo: 10:00 - 22:00</p>
+                    <p class="name" id="designerOutput"></p>
+                    <p class="year" id="yearOutput"></p>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <script src="html2canvas.min.js"></script>
+    <script src="jspdf.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
