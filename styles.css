@@ -1,6 +1,6 @@
 /* Estilos generales */
 body {
-    font-family: Arial, sans-serif;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     background-color: #f4f4f4;
     margin: 0;
     padding: 0;
@@ -86,32 +86,43 @@ button:hover {
     height: 6cm;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     text-align: left;
-    line-height: 1.4em;
+    line-height: 1.2em;
 }
 
 .text-section h2 {
     margin: 0;
-    font-size: 18px;
+    font-size: 12px;
     font-weight: normal;
     color: #333;
+    letter-spacing: 0.05em;
 }
 
 .text-section p {
     margin: 5px 0;
-    font-size: 14px;
+    font-size: 10px;
     color: #333;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-/* Ajuste de alineación y tipografía */
-.text-section .designer-name {
+.text-section .bold {
     font-weight: bold;
+}
+
+.text-section .details {
+    font-size: 8px;
+    color: #666;
+}
+
+.text-section .name {
     margin-top: 10px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
 .text-section .year {
     font-size: 12px;
-    color: #777;
+    color: #000;
+    margin-bottom: 5px;
 }
