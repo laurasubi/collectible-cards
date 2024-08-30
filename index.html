@@ -3,34 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario de Diseño</title>
+    <title>Generador de Postal</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
 </head>
 <body>
     <div class="container">
-        <h1>Generador de Diseño</h1>
+        <h1>Generador de Postal</h1>
         <form id="designForm">
-            <label for="title">Título:</label>
+            <label for="title">Nombre:</label>
             <input type="text" id="title" name="title" required>
             
-            <label for="description">Descripción:</label>
+            <label for="date">Fecha:</label>
+            <input type="date" id="date" name="date" required>
+            
+            <label for="designer">Diseñadora:</label>
+            <input type="text" id="designer" name="designer" required>
+            
+            <label for="description">Breve Descripción:</label>
             <textarea id="description" name="description" required></textarea>
+
+            <label for="imageUrl">URL de la Imagen (para el reverso):</label>
+            <input type="url" id="imageUrl" name="imageUrl" required>
             
-            <label for="color">Color Principal:</label>
-            <input type="color" id="color" name="color" required>
-            
-            <button type="submit">Generar Diseño</button>
+            <button type="submit">Generar Postal</button>
         </form>
 
-        <button id="exportBtn" style="display: none;">Exportar Diseño</button>
+        <button id="exportBtn" style="display: none;">Exportar Postal</button>
 
         <div id="output"></div>
 
-        <h2>Diseños Guardados</h2>
+        <h2>Postales Guardadas</h2>
         <div id="savedDesigns"></div>
     </div>
     <script src="script.js"></script>
 </body>
 </html>
+
