@@ -52,48 +52,49 @@ button:hover {
 #output {
     margin-top: 30px;
     display: flex;
-    justify-content: space-between;
-}
-
-.postal {
-    width: 49%;
-    height: 600px;
-    border: 2px solid #000;
-    display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
 }
 
-.front, .back {
+.postal {
+    width: 8.5cm;
+    height: 12cm;
+    border: 1px solid #000;
+    display: flex;
+    flex-direction: column;
+}
+
+.image-section {
     width: 100%;
-    height: 100%;
-    position: relative;
+    height: 6cm;
+    border-bottom: 1px solid #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
 }
 
-.back img {
+.image-section img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
 }
 
-.front .content {
-    text-align: center;
-    padding: 20px;
+.text-section {
+    padding: 10px;
+    height: 6cm;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
-.front h2 {
+.text-section h2 {
     margin: 0;
-    font-size: 24px;
+    font-size: 16px;
     color: #333;
 }
 
-.front p {
+.text-section p {
     margin: 5px 0;
-    font-size: 18px;
+    font-size: 14px;
     color: #555;
-}
-
-#savedDesigns .postal {
-    margin-top: 10px;
 }
