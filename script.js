@@ -3,15 +3,24 @@ document.getElementById('designForm').addEventListener('submit', function(event)
 
     // Recoger los datos del formulario
     const title = document.getElementById('title').value;
+    const date = document.getElementById('date').value;
+    const designer = document.getElementById('designer').value;
     const description = document.getElementById('description').value;
-    const color = document.getElementById('color').value;
+    const imageUrl = document.getElementById('imageUrl').value;
 
-    // Crear el diseño con los datos proporcionados
+    // Crear la postal con los datos proporcionados
     const output = document.getElementById('output');
     output.innerHTML = `
-        <div id="designOutput" class="design-output" style="border-color: ${color};">
-            <h2 style="color: ${color};">${title}</h2>
-            <p>${description}</p>
+        <div class="postal front">
+            <div class="content">
+                <h2>${title}</h2>
+                <p>Fecha: ${date}</p>
+                <p>Diseñadora: ${designer}</p>
+                <p>${description}</p>
+            </div>
+        </div>
+        <div class="postal back">
+            <img src="${imageUrl}" alt="Postal Image">
         </div>
     `;
 
@@ -20,22 +29,34 @@ document.getElementById('designForm').addEventListener('submit', function(event)
 
     // Almacenar los datos localmente
     const designs = JSON.parse(localStorage.getItem('designs')) || [];
-    designs.push({ title, description, color });
+    designs.push({ title, date, designer, description, imageUrl });
     localStorage.setItem('designs', JSON.stringify(designs));
     loadSavedDesigns();
 });
 
 // Manejar la exportación
 document.getElementById('exportBtn').addEventListener('click', function() {
-    const designOutput = document.getElementById('designOutput');
+    const front = document.querySelector('.front');
+    const back = document.querySelector('.back');
 
-    // Usar html2canvas para capturar el diseño como una imagen
-    html2canvas(designOutput).then(canvas => {
-        // Crear un PDF a partir del canvas
-        const imgData = canvas.toDataURL('image/png');
-        const pdf = new jsPDF();
-        pdf.addImage(imgData, 'PNG', 10, 10);
-        pdf.save('design.pdf');
+    // Capturar el lado frontal como una imagen
+    html2canvas(front).then(frontCanvas => {
+        // Capturar el lado posterior como una imagen
+        html2canvas(back).then(backCanvas => {
+            const pdf = new jsPDF('p', 'mm', 'a4');
+
+            // Añadir la imagen frontal al PDF
+            const frontImgData = frontCanvas.toDataURL('image/png');
+            pdf.addImage(frontImgData, 'PNG', 10, 10, 190, 135);
+
+            // Añadir la imagen posterior al PDF
+            pdf.addPage();
+            const backImgData = backCanvas.toDataURL('image/png');
+            pdf.addImage(backImgData, 'PNG', 10, 10, 190, 135);
+
+            // Descargar el PDF
+            pdf.save('postal.pdf');
+        });
     });
 });
 
@@ -47,11 +68,19 @@ function loadSavedDesigns() {
 
     savedDesigns.forEach((design, index) => {
         const designElement = document.createElement('div');
-        designElement.classList.add('design-output');
-        designElement.style.borderColor = design.color;
+        designElement.classList.add('postal');
         designElement.innerHTML = `
-            <h2 style="color: ${design.color};">${design.title}</h2>
-            <p>${design.description}</p>
+            <div class="front">
+                <div class="content">
+                    <h2>${design.title}</h2>
+                    <p>Fecha: ${design.date}</p>
+                    <p>Diseñadora: ${design.designer}</p>
+                    <p>${design.description}</p>
+                </div>
+            </div>
+            <div class="back">
+                <img src="${design.imageUrl}" alt="Postal Image">
+            </div>
             <button onclick="deleteDesign(${index})">Eliminar</button>
         `;
         savedDesignsContainer.appendChild(designElement);
