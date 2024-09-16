@@ -46,7 +46,7 @@ button:hover {
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, 300px);
+    grid-template-columns: repeat(auto-fill, 30px);
     gap: 20px;
     justify-content: center;
 }
@@ -54,14 +54,14 @@ button:hover {
 .grid-item {
     background-color: #fff;
     padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    width: 300px;
+  //  border-radius: 5px;
+  //  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    width: 30px;
 }
 
 .grid-item img {
-    width: 100%;
+ //   width: 100%;
     border-radius: 5px;
     margin-bottom: 10px;
 }
