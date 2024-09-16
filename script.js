@@ -1,21 +1,30 @@
-document.getElementById('exportBtn').addEventListener('click', function() {
-    const postal = document.querySelector('.postal');
+document.getElementById("uploadForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+    
+    const imageInput = document.getElementById("imageInput").files[0];
+    const textInput = document.getElementById("textInput").value;
+    
+    if (imageInput && textInput) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const grid = document.getElementById("grid");
 
-    // Dimensiones en píxeles para 300 dpi
-    const widthInPx = 8.5 * 300 / 2.54; // convertir cm a pulgadas y luego a píxeles
-    const heightInPx = 6 * 300 / 2.54; 
+            const gridItem = document.createElement("div");
+            gridItem.className = "grid-item";
 
-    html2canvas(postal, {
-        scale: 1,  // No necesitamos escalar más allá de las dimensiones especificadas
-        width: widthInPx,
-        height: heightInPx,
-        useCORS: true
-    }).then(canvas => {
-        const imgData = canvas.toDataURL('image/png', 1.0);  // Calidad 1.0 para PNG
-        const pdf = new jsPDF('p', 'mm', [85, 60]); // Tamaño de la postal en mm
+            const img = document.createElement("img");
+            img.src = e.target.result;
 
-        // Agregar la imagen al PDF con las dimensiones correctas en milímetros
-        pdf.addImage(imgData, 'PNG', 0, 0, 85, 60);
-        pdf.save('postal.pdf');
-    });
+            const description = document.createElement("p");
+            description.textContent = textInput;
+
+            gridItem.appendChild(img);
+            gridItem.appendChild(description);
+            grid.appendChild(gridItem);
+        }
+        
+        reader.readAsDataURL(imageInput);
+    } else {
+        alert("Please upload an image and enter text.");
+    }
 });
