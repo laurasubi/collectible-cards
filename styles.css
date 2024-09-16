@@ -1,27 +1,36 @@
+/* Reiniciar estilos básicos para asegurar compatibilidad */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+html, body {
+    height: 100%;
+}
+
+/* Estilos generales del body */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     padding: 20px;
 }
 
+/* Container para centrar el contenido */
 .container {
     max-width: 800px;
     margin: 0 auto;
     text-align: center;
 }
 
+/* Tamaño del encabezado */
 h1 {
-    font-family: Arial, sans-serif;
-    font-size: 10px;
     margin-bottom: 20px;
+    font-size: 24px; /* Ajuste de tamaño */
+    color: #333; /* Color oscuro para buena legibilidad */
 }
 
+/* Formulario */
 form {
     margin-bottom: 20px;
 }
@@ -31,6 +40,7 @@ input[type="file"], input[type="text"] {
     padding: 10px;
     width: 80%;
     max-width: 500px;
+    font-size: 16px; /* Ajuste de tamaño de texto */
 }
 
 button {
@@ -39,35 +49,44 @@ button {
     color: #fff;
     border: none;
     cursor: pointer;
+    font-size: 16px; /* Asegurar que el botón tenga un tamaño legible */
 }
 
 button:hover {
     background-color: #0056b3;
 }
 
+/* Grid para mostrar las imágenes */
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, 30px);
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Columnas ajustables con mínimo de 300px */
     gap: 20px;
     justify-content: center;
+    align-items: start;
 }
 
+/* Cada ítem de la grid */
 .grid-item {
-    background-color: #fff;
+    background-color: red;
     padding: 10px;
-//    border-radius: 5px;
- //   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
-    width: 30px;
+    width: 300px; /* Fijar el ancho de cada ítem */
 }
 
+/* Imagen dentro de cada ítem */
 .grid-item img {
-//    width: 100%;
+    width: auto; /* Mantener el ancho automático */
+    height: 30px; /* Fijar la altura máxima a 30px */
     border-radius: 5px;
     margin-bottom: 10px;
+    object-fit: contain; /* Asegura que la imagen mantenga sus proporciones dentro de los límites */
 }
 
+/* Texto descriptivo */
 .grid-item p {
     font-size: 14px;
     color: #333;
+    word-wrap: break-word; /* Evitar que palabras largas rompan el diseño */
 }
