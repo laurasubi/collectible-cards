@@ -1,48 +1,41 @@
-/* Estilos generales */
-body {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    background-color: #f4f4f4;
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 20px;
 }
 
 .container {
-    width: 50%;
-    margin: auto;
-    background: #fff;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-top: 50px;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
 }
 
-h1, h2 {
-    text-align: center;
-    color: #333;
+h1 {
+    margin-bottom: 20px;
 }
 
 form {
-    display: flex;
-    flex-direction: column;
-}
-
-label {
-    margin-bottom: 5px;
-    color: #333;
-}
-
-input, textarea {
-    padding: 10px;
     margin-bottom: 20px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+}
+
+input[type="file"], input[type="text"] {
+    margin: 10px 0;
+    padding: 10px;
+    width: 80%;
+    max-width: 500px;
 }
 
 button {
-    padding: 10px;
-    background-color: #007BFF;
-    color: white;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
     border: none;
-    border-radius: 5px;
     cursor: pointer;
 }
 
@@ -50,79 +43,22 @@ button:hover {
     background-color: #0056b3;
 }
 
-#output {
-    margin-top: 30px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 20px;
 }
 
-/* Estilos de la postal */
-.postal {
-    width: 8.5cm;
-    height: 12cm;
-    border: 1px solid #000;
-    display: flex;
-    flex-direction: column;
-}
-
-.image-section {
-    width: 100%;
-    height: 6cm;
-    border-bottom: 1px solid #000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-}
-
-.image-section img {
-    width: 100%;
-    height: auto;
-}
-
-.text-section {
+.grid-item {
+    background-color: #fff;
     padding: 10px;
-    height: 6cm;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    text-align: left;
-    line-height: 1.2em;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
-.text-section h2 {
-    margin: 0;
-    font-size: 12px;
-    font-weight: normal;
-    color: #333;
-    letter-spacing: 0.05em;
-}
-
-.text-section p {
-    margin: 5px 0;
-    font-size: 10px;
-    color: #333;
-}
-
-.text-section .bold {
-    font-weight: bold;
-}
-
-.text-section .details {
-    font-size: 8px;
-    color: #666;
-}
-
-.text-section .name {
-    margin-top: 10px;
-    font-size: 12px;
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
-.text-section .year {
-    font-size: 12px;
-    color: #000;
-    margin-bottom: 5px;
+.grid-item img {
+    width: 100%;
+    border-radius: 5px;
+    margin-bottom: 10px;
 }
